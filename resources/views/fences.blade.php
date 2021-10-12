@@ -5,8 +5,8 @@
                 <div class="p-6 bg-white border-b border-gray-200">
 <h1 class="text-center my-5 text-xl">Nuolaidos</h1>
 
-                    @include('components.discount-slider')
-
+{{--                    @include('components.discount-slider')--}}
+            @livewire('discount-slider')
                     <div class="w-full bg-gray-100 p-2">
                     <h2 class="text-center my-5 text-xl">Produktų filtras</h2>
                         <div class="text-center">

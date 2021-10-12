@@ -1,6 +1,6 @@
 <div>
 
-    <div x-data="{ open: false }">
+    <div x-data="{ open: false }"><aq></aq>
         <button x-on:click="open = ! open" class="justify-center w-full bg-indigo-400 rounded my-2">Kategorijos</button>
 
         <div x-show="open" x-transition>

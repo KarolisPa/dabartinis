@@ -17,7 +17,7 @@ use WithFileUploads;
     public $name, $unit_of_measurement, $category, $model, $price , $photo, $discount_size, $discount_status, $discount_end;
 
     protected $listeners = [
-        'savedCat' => '$refresh'
+        'savedCat' => '$refresh',
     ];
 //    public function savedCat(){
 //        $this->render();
@@ -63,9 +63,9 @@ use WithFileUploads;
     }
 
 
-    public function updated($propertyName){
-        $this->validateOnly($propertyName);
-    }
+//    public function updated($propertyName){
+//        $this->validateOnly($propertyName);
+//    }
 
     public function save()
     {
