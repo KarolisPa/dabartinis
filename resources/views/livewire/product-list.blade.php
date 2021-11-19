@@ -1,8 +1,20 @@
 <div>
+    <div class="w-full bg-gray-100 p-2 mt-12 border border-gray-300 rounded">
+        <h2 class="text-center my-2 text-2xl">Produktų filtras pagal kategorija</h2>
+        <div class="text-center">
+            @foreach( $cats as $cat)
+                <label class="inline-flex items-center mx-1">
+                    <input wire:click="$emit('checked')" wire:model.debounce.350ms="catFilter" type="checkbox" value="{{$cat->name}}" class="form-checkbox">
+                    <span class="ml-2">{{$cat->name}}</span>
+                </label>
+            @endforeach
+        </div>
 
-{{--    @Auth--}}
-{{--        @livewire('add-prod')--}}
-{{--    @endauth--}}
+        @foreach($catFilter as $filts)
+            {{$filts}}
+        @endforeach
+    </div>
+
     <section class="text-gray-600 body-font">
         <div class="container px-5 py-24 mx-auto">
             <div class="flex flex-wrap justify-start">
@@ -10,11 +22,14 @@
 
 
                 <div class="p-4 w-full bg-gray-200 my-3 lg:w-3/12 lg:mx-9 inline">
-                    <a href="{{route('showPreke', $prod->id)}}">
-{{--                    <div class="block relative h-48 rounded overflow-hidden">--}}
+                        @switch($prod->discount_status)
+                            @case("0")
+                        <a href="{{route('showPreke', $prod->id)}}">
+                            @break
+                        @endswitch
+
                     <div class="h-48 w-full">
                         <img alt="nuotrauka" class="object-cover object-center w-full h-full block" src="{{asset('storage/products/'.$prod->photo)}}">
-{{--                    </div>--}}
                     </div>
                         <div class="mt-4">
                         <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{$prod->category}}</h3>

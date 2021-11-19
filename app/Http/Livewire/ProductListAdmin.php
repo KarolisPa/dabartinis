@@ -16,8 +16,9 @@ class ProductListAdmin extends Component
         'unit_of_measurement' => 'required|max:5',
         'category' => 'required',
         'model' => 'required',
-        'price' => 'required|',
-//        'photo' => 'image|required',
+        'price' => 'required',
+        'about' => 'required'
+
     ];
 
     protected $listeners = [
@@ -27,7 +28,7 @@ class ProductListAdmin extends Component
     public  $nId, $discount_status;
     public  $name, $unit_of_measurement, $category, $model, $photo;
     public  $price ,  $discount_price;
-    public  $discount_end;
+    public  $discount_end, $about;
 
 
     public function saved(){
@@ -53,6 +54,7 @@ class ProductListAdmin extends Component
         $this->discount_price = $prod[0]["discount_price"];
         $this->discount_status = $prod[0]["discount_status"];
         $this->discount_end = $prod[0]["discount_end"];
+        $this->about = $prod[0]["about"];
     }
 
     public function delete($id){
@@ -99,7 +101,8 @@ class ProductListAdmin extends Component
             'photo' => $this->photo,
             'discount_price' =>$this->discount_price,
             'discount_status'=>$this->discount_status,
-            'discount_end'=>$this->discount_end
+            'discount_end'=>$this->discount_end,
+            'about' =>$this->about
         ]);
 
 //        $path = public_path('storage/products/'.$this->photo);

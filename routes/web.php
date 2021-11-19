@@ -36,8 +36,7 @@ Route::get('/dash', function(){
 Route::get('/preke/{id}', [\App\Http\Livewire\ProductList::class, 'show'])
     ->name('showPreke');
 
-//Route::get('/', function () {
-//    return view('index');
-//})->middleware(['auth'])->name('index');
+Route::get('/akcija/{id}', [\App\Http\Livewire\ProductList::class, 'showDiscount'])
+    ->name('showPrekeDiscount');
 
 require __DIR__.'/auth.php';

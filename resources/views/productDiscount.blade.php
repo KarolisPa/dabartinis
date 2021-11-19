@@ -1,12 +1,12 @@
 <x-app-layout>
 
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <h1 class="text-4xl title-font font-medium mb-4 text-center mt-6 -mb-1">Prekės aprašymas</h1>
 <hr class="my-5">
+                    <h3 class="text-xl title-font font-medium text-center -mb-3 text-green-400">Prekė su nuolaida</h3>
                     <section class="text-gray-600 body-font overflow-hidden">
                         <div class="container px-5 py-24 mx-auto">
                             <div class="lg:w-4/5 mx-auto flex flex-wrap">
@@ -27,7 +27,11 @@
                                     </div>
                                     <div class="flex border-t border-gray-200 py-2">
                                         <span class="text-gray-500">Kaina</span>
-                                        <span class="ml-auto title-font font-medium text-2xl text-gray-900">{{$product->price}} €</span>
+                                        <span class="ml-auto title-font font-medium text-2xl text-gray-900 line-through">{{$product->price}} €</span>
+                                    </div>
+                                    <div class="flex border-t border-gray-200 py-2">
+                                        <span class="text-gray-500">Kaina su nuolaida</span>
+                                        <span class="ml-auto title-font font-medium text-2xl text-gray-900">{{$product->discount_price}} €</span>
                                     </div>
                                 </div>
                                 <img alt="ecommerce" class="lg:w-1/2 h-96 object-cover object-center rounded" src="{{asset('storage/products/'.$product->photo)}}">
@@ -41,4 +45,8 @@
             </div>
         </div>
     </div>
+
+
+
+
 </x-app-layout>

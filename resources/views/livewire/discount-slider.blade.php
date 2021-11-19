@@ -15,15 +15,8 @@
       }
       }
     })"
-        {{--     class="w-full flex flex-row"--}}
-    >
-        {{--                        <div class="absolute inset-y-0 left-0 z-10 flex items-center">--}}
-        {{--                            <button @click="swiper.slidePrev()"--}}
-        {{--                                    class="bg-white -ml-2 lg:-ml-4 flex justify-center items-center w-10 h-10 rounded-full shadow focus:outline-none">--}}
-        {{--                                <svg viewBox="0 0 20 20" fill="currentColor" class="chevron-left w-6 h-6"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>--}}
-        {{--                            </button>--}}
-        {{--                        </div>--}}
 
+    >
         <div class="swiper-container " x-ref="container">
             <div class="swiper-wrapper">
                 <!-- Slides -->
@@ -32,14 +25,11 @@
                 <div class="swiper-slide">
                     <div class="flex flex-col rounded shadow overflow-hidden">
                         <div class="flex-shrink-0">
-                            <a href="{{route('showPreke', $discount->id)}}">
+                            <a href="{{route('showPrekeDiscount', $discount->id)}}">
                             <img class="h-32 w-full object-cover" src="{{asset('storage/products/'.$discount->photo)}}" alt="">
-                            <figcaption class="absolute text-lg -mt-16 text-white px-4 w-full">
-                                <div class="">
-                                    <h1 class="text-2xl bg-red-400">{{$discount->discount_price}}&euro;</h1>
-                                </div>
-                                <div>
-                                    <h1 class="bg-yellow-400"><del>{{$discount->price}}&euro;</del></h1>
+                            <figcaption class="absolute text-2xl -mt-22 text-white w-full">
+                                <div class="bg-green-700 text-center rounded">
+                                    <h1 class="">{{$discount->discount_price}}&euro;</h1>
                                 </div>
                             </figcaption>
                             </a>
@@ -47,14 +37,6 @@
                     </div>
                 </div>
                 @endforeach
-
-
-        {{--                        <div class="absolute inset-y-0 right-0 z-10 flex items-center">--}}
-        {{--                            <button @click="swiper.slideNext()"--}}
-        {{--                                    class="bg-white -mr-2 lg:-mr-4 flex justify-center items-center w-10 h-10 rounded-full shadow focus:outline-none">--}}
-        {{--                                <svg viewBox="0 0 20 20" fill="currentColor" class="chevron-right w-6 h-6"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>--}}
-        {{--                            </button>--}}
-        {{--                        </div>--}}
     </div>
 
         </div>

@@ -14,7 +14,7 @@ use Livewire\WithFileUploads;
 class AddProd extends Component
 {
 use WithFileUploads;
-    public $name, $unit_of_measurement, $category, $model, $price , $photo, $discount_size, $discount_status, $discount_end;
+    public $name, $unit_of_measurement, $category, $model, $price, $about, $photo, $discount_size, $discount_status, $discount_end;
 
     protected $listeners = [
         'savedCat' => '$refresh',
@@ -28,7 +28,8 @@ use WithFileUploads;
         'unit_of_measurement' => 'required|max:5',
         'category' => 'required',
         'model' => 'required',
-        'price' => 'required|',
+        'price' => 'required',
+        'about' => 'required',
         'photo' => 'image|required',
     ];
     protected $messages = [
@@ -77,6 +78,7 @@ use WithFileUploads;
             'category' => $this->category,
             'model' => $this->model,
             'price' => $this->price,
+            'about' => $this->about,
             'photo' => $nName
         ]);
 
@@ -93,6 +95,7 @@ use WithFileUploads;
         $this->discount_size = "";
         $this->discount_status = "";
         $this->discount_end = "";
+        $this->about = '';
         }
 
 }

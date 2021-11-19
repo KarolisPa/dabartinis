@@ -17,7 +17,9 @@
             <td class="border px-6 py-4">Akcija</td>
             <td class="border px-6 py-4">Kaina su akcija</td>
             <td class="border px-6 py-4">Akcijos pabaiga</td>
+            <td class="border px-6 py-4">Aprašymas</td>
             <td class="border px-6 py-4">Veiksmai</td>
+
         </tr>
         </thead>
         @foreach($prods as $prod)
@@ -38,11 +40,11 @@
                     @endif
                 <td class="border px-6 py-4">{{$prod->discount_price}}</td>
                 <td class="border px-6 py-4">{{$prod->discount_end}}</td>
+                <td class="border px-6 py-4">{{$prod->about}}</td>
                 <td class="border px-6 py-4">
                     <button class="bg-green-400 rounded px-2" wire:click = "setId({{$prod->id}})" onclick="editProd()">Redaguoti</button>
                     <button class="bg-red-400 rounded px-2" wire:click.prevent="delete({{$prod->id}})" >Trinti</button>
                 </td>
-
             </tr>
         @endforeach
     </table>
@@ -88,13 +90,6 @@
                                 <input name="nameProd" wire:model="name" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="{{$name}}">
                                 @error('name') <span class="error text-sm text-red-400">{{ $message }}</span> @enderror
 
-{{--                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="categoryProd">--}}
-{{--                                    Kategorija--}}
-{{--                                </label>--}}
-{{--                                <input name="categoryProd" wire:model="category" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="{{$prod->category}}">--}}
-{{--                                @error('category') <span class="error text-sm text-red-400">{{ $message }}</span> @enderror--}}
-
-{{--                            <div class="flex flex-wrap -mx-3 mb-6">--}}
                                 <div class="w-full px-3 mb-6">
                                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="categoryModel">
                                         Kategorija
@@ -159,6 +154,13 @@
                                 <input name ="fotoProd" wire:model="photo" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="file" placeholder="{{$photo}}">
                                 @error('photo') <span class="error text-sm text-red-400">{{ $message }}</span> @enderror
 
+                            <div class="w-full px-3">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="about">
+                                    Aprašymas
+                                </label>
+                                <input wire:model="about" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id='about' type="text" placeholder="Apie prekę">
+                                @error('unit_of_measurement') <span class="error text-sm text-red-400">{{ $message }}</span> @enderror
+                            </div>
 
                             </div>
 {{--                        </div>--}}

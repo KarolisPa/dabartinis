@@ -97,7 +97,15 @@
                                                 </label>
                                                                                                 <input wire:model="photo" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="photo" type="file" placeholder="tvora.jpg">
                         @error('photo') <span class="error text-sm text-red-400">{{ $message }}</span> @enderror
-                                            </div>
+                    </div>
+
+                    <div class="w-full px-3">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="about">
+                            Aprašymas
+                        </label>
+                        <input wire:model="about" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id='about' type="text" placeholder="Apie prekę">
+                        @error('unit_of_measurement') <span class="error text-sm text-red-400">{{ $message }}</span> @enderror
+                    </div>
 
                     <div
                         class="alert alert-success bg-green-300 rounded text-center w-full my-5"
@@ -124,6 +132,8 @@
     </div>
 </div>
 
+
+
     @push('scripts')
 <script>
     var openmodal = document.querySelectorAll('.modal-open')
@@ -142,18 +152,6 @@
         closemodal[i].addEventListener('click', toggleModal)
     }
 
-    // document.onkeydown = function(evt) {
-    //     evt = evt || window.event
-    //     var isEscape = false
-    //     if ("key" in evt) {
-    //         isEscape = (evt.key === "Escape" || evt.key === "Esc")
-    //     } else {
-    //         isEscape = (evt.keyCode === 27)
-    //     }
-    //     if (isEscape && document.body.classList.contains('modal-active')) {
-    //         toggleModal()
-    //     }
-    // };
 
     function toggleModal () {
         const body = document.querySelector('body')

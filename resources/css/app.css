@@ -2,6 +2,7 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 @import 'swiper/swiper-bundle.css';
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
 @layer utilities {
     @variants responsive {
         /* Chrome, Safari and Opera */
