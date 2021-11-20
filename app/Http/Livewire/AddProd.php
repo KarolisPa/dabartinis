@@ -14,15 +14,11 @@ use Livewire\WithFileUploads;
 class AddProd extends Component
 {
 use WithFileUploads;
-    public $name, $unit_of_measurement, $category, $model, $price, $about, $photo, $discount_size, $discount_status, $discount_end;
+    public $name, $color, $width, $height, $unit_of_measurement, $category, $model, $price, $about, $photo, $discount_size, $discount_status, $discount_end;
 
     protected $listeners = [
         'savedCat' => '$refresh',
     ];
-//    public function savedCat(){
-//        $this->render();
-//    }
-
     protected $rules = [
         'name' => 'required|max:255',
         'unit_of_measurement' => 'required|max:5',
@@ -30,6 +26,8 @@ use WithFileUploads;
         'model' => 'required',
         'price' => 'required',
         'about' => 'required',
+        'width' => 'required',
+        'height' => 'required',
         'photo' => 'image|required',
     ];
     protected $messages = [
@@ -40,7 +38,9 @@ use WithFileUploads;
         'model.required' => 'Būtina užpildyti',
         'price.required' => 'Būtina užpildyti',
         'photo.required' => 'Būtina įkelti foto',
-        'photo.image' => 'Failas turi būti paveikslėlio tipo'
+        'photo.image' => 'Failas turi būti paveikslėlio tipo',
+        'width.required' => 'privaloma nurodyti produkto  plotį',
+        'height.required' => 'privaloma nurodyti produkto aukštį'
     ];
 
     public function render()
@@ -62,12 +62,6 @@ use WithFileUploads;
         }
         return $PhotoName;
     }
-
-
-//    public function updated($propertyName){
-//        $this->validateOnly($propertyName);
-//    }
-
     public function save()
     {
         $this->validate();
@@ -79,6 +73,9 @@ use WithFileUploads;
             'model' => $this->model,
             'price' => $this->price,
             'about' => $this->about,
+            'height' => $this->height,
+            'width' => $this->width,
+            'color' => $this->color,
             'photo' => $nName
         ]);
 
@@ -96,6 +93,9 @@ use WithFileUploads;
         $this->discount_status = "";
         $this->discount_end = "";
         $this->about = '';
+        $this->width = "";
+        $this->color = "";
+        $this->height = "";
         }
 
 }

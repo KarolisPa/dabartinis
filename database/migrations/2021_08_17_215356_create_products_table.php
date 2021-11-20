@@ -21,6 +21,9 @@ class CreateProductsTable extends Migration
             $table->string('category');
             $table->string('model');
             $table->double('price', 6, 2);
+            $table->double('height', 2, 2);
+            $table->double('width', 2, 2);
+            $table->string('color', 90);
             $table->string('photo', 255);
             $table->double('discount_price', 6, 2)->nullable();
             $table->boolean('discount_status')->default(false);

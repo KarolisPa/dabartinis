@@ -3,10 +3,9 @@
 
 <!--Modal-->
 <div wire:ignore.self class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
-{{--    wire:ignore.self--}}
-    <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+    <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50 overscroll-none"></div>
 
-    <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+    <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 ">
 
         <div class="modal-close absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">
             <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
@@ -77,6 +76,27 @@
                         </label>
                         <input wire:model="model" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="model" type="text" placeholder="Modelio pavadinimas">
                         @error('model') <span class="error text-sm text-red-400">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="height">
+                            Aukštis
+                        </label>
+                        <input wire:model="height" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="height" type="number" step="0.01" placeholder="1.73">
+                        @error('height') <span class="error text-sm text-red-400">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="width">
+                            Plotis
+                        </label>
+                        <input wire:model="width" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="width" type="number" step="0.01" placeholder="0.67">
+                        @error('width') <span class="error text-sm text-red-400">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="color">
+                            Spalva
+                        </label>
+                        <input wire:model="color" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="color" type="text" placeholder="Mėlyna">
+                        @error('color') <span class="error text-sm text-red-400">{{ $message }}</span> @enderror
                     </div>
                     <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="price">
