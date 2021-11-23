@@ -21,7 +21,7 @@
                 @foreach($prods as $prod)
 
 
-                <div class="p-4 w-full bg-gray-200 my-3 lg:w-3/12 lg:mx-9 inline">
+                <div class="rounded rounded-2xl shadow-xl p-4 w-full bg-gray-200 my-3 lg:w-3/12 lg:mx-9 inline">
                         @switch($prod->discount_status)
                             @case("0")
                         <a href="{{route('showPreke', $prod->id)}}">
