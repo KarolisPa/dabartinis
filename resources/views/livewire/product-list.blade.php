@@ -3,16 +3,13 @@
         <h2 class="text-center my-2 text-2xl">Produktų filtras pagal kategorija</h2>
         <div class="text-center">
             @foreach( $cats as $cat)
-                <label class="inline-flex items-center mx-1">
+                <label class="inline-flex items-center mx-1" onclick="">
                     <input wire:click="$emit('checked')" wire:model.debounce.350ms="catFilter" type="checkbox" value="{{$cat->name}}" class="form-checkbox">
                     <span class="ml-2">{{$cat->name}}</span>
                 </label>
             @endforeach
         </div>
 
-        @foreach($catFilter as $filts)
-            {{$filts}}
-        @endforeach
     </div>
 
     <section class="text-gray-600 body-font">

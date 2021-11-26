@@ -7,6 +7,7 @@ module.exports = {
         ],
     theme: {
         extend: {
+            scale: ['focus-within'],
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
                 ubuntu : ['Ubuntu', 'sans-serif']
@@ -20,6 +21,8 @@ module.exports = {
         },
     },
 
-    plugins: [require('@tailwindcss/forms')
+    plugins: [require('@tailwindcss/forms'),
+        require('tailwindcss'),
+        require('autoprefixer'),
     ],
 };
