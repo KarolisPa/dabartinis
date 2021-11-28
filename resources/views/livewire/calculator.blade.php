@@ -14,7 +14,6 @@
                         <input wire:ignore type="image" wire:click="$set('varteliaiSelected', {{$vartas->id}})" wire:model="varteliaiSelected" class="object-contain h-32 border border-2 mt-3 focus:border-yellow-700" alt="nuotrauka" src="{{asset('storage/products/'.$vartas->photo)}}">
                             <h2 class="text-gray-900 title-font text-lg font-medium">{{$vartas->name}}</h2>
                             <p class="mt-1">{{$vartas->price}} €</p>
-
                         </input>
 </div>
                     @endforeach
@@ -36,7 +35,7 @@
 
 
 
-        <div  wire:ignore.self class="mySlides w-full h-auto ">
+        <div  wire:ignore.self class="mySlides w-full h-full">
             <h1>Pasirinkite Vartus</h1>
             <button class="bg-blue-400 rounded rounded-2xl m-2 px-2" wire:click="$set('vartaiSelected', {{0}})" onclick="plusSlides(1)">Vartų nereikia</button>
             <div class="lg:grid lg:gap-3 lg:grid-cols-3 sm:grid sm:gap-3 sm:grid-cols-2">
@@ -91,7 +90,7 @@
                             </div>
         </div>
 
-        <div  wire:ignore.self class="mySlides w-full h-auto ">
+        <div  wire:ignore.self class="mySlides w-full h-auto">
             <h1>Pasirinkite bokšteli</h1>
             <button class="bg-blue-400 rounded rounded-2xl m-2 px-2" wire:click="$set('boksteliaiSelected', {{0}})" onclick="plusSlides(1)">Bokštelių nereikia</button>
             <div class="lg:grid lg:gap-3 lg:grid-cols-3 sm:grid sm:gap-3 sm:grid-cols-2">
@@ -112,36 +111,22 @@
                     <button  class="disabled:opacity-10 p-2 bg-gray-500 text-white font-bold border-b-4 border-blue-700 rounded">Sekantis žingsnis</button>
                 @endif
                 @if($boksteliaiSelected !== null)
-                    <button  class="disabled:opacity-10 p-2 bg-blue-500 hover:bg-blue-400 text-white font-bold border-b-4 border-blue-700 hover:border-blue-500 rounded" onclick="plusSlides(1)">Sekantis žingsnis</button>
-                @endif
+                    <div>
+                    <button wire:click="$emit('productsAdded')" onclick="plusSlides(1)" class="disabled:opacity-10 p-2 bg-blue-500 hover:bg-blue-400 text-white font-bold border-b-4 border-blue-700 hover:border-blue-500 rounded cursor-pointer left-auto right-0">Sekantis žingsnis</button>
+                    </div>
+                        @endif
             </div>
         </div>
 
-        <div wire:ignore class="mySlides w-full h-auto ">
-            <button class="bg-blue-400 rounded rounded-2xl m-2 px-2" wire:click="show()" >Tikrinti</button>
-
-            <h1>Jūsų pasirinktos tvoros dalys</h1>
-            <button class="bg-blue-400 rounded rounded-2xl m-2 px-2" wire:click="$set('boksteliaiSelected', {{0}})" onclick="plusSlides(1)">Bokštelių nereikia</button>
+        <div wire:ignore.self class="mySlides w-full h-auto ">
+            <h1 class="-mt-10">Jūsų pasirinktos tvoros dalys :</h1>
+            <button class="bg-blue-400 rounded rounded-2xl m-2 px-2" wire:click="$emit('productsAdded')" >Tikrinti</button>
             <div class="lg:grid lg:gap-3 lg:grid-cols-3 sm:grid sm:gap-3 sm:grid-cols-2">
-{{--                @foreach($boksteliai as $bokstelis)--}}
-{{--                    <div  wire:click="$set('boksteliaiSelected', {{$bokstelis->id}})" class="rounded-xl shadow-xl border border-2 bg-gray-200 m-5 focus-within:bg-yellow-400 focus-within:border-yellow-700">--}}
-{{--                        <input type="image" wire:model ="vartaiSelected" class="border border-2 z-10 h-32  mt-3 focus:border-yellow-700" alt="nuotrauka" src="{{asset('storage/products/'.$bokstelis->photo)}}">--}}
-{{--                        <h2 class="text-gray-900 title-font text-lg font-medium">{{$bokstelis->name}}</h2>--}}
-{{--                        <p class="mt-1">{{$bokstelis->price}} €</p>--}}
-
-{{--                        </input>--}}
-{{--                    </div>--}}
-{{--                @endforeach--}}
-
+{{$order}}
             </div>
 
         </div>
-
-        <!-- Next and previous buttons -->
-
-{{--        <a class="next" onclick="plusSlides(1)">&#10095;</a>--}}
     </div>
-    <br>
 
     @push('scripts')
         <script>
@@ -166,10 +151,8 @@
                 if (n < 1) {slideIndex = slides.length}
                 for (i = 0; i < slides.length; i++) {
                       slides[i].style.display = "none";
-
                 }
                   slides[slideIndex-1].style.display = "block";
-
             }
         </script>
     @endpush

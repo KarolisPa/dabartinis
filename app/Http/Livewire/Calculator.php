@@ -12,6 +12,9 @@ class Calculator extends Component
     public $vartaiSelected;
     public $tvoraSelected;
     public $boksteliaiSelected;
+    public $order;
+
+    protected $listeners = ['productsAdded' => 'calc'];
 
     public function render()
     {
@@ -22,13 +25,7 @@ class Calculator extends Component
             'boksteliai' => Product::where('category', 'bokstelis')->paginate(9)
         ]);
     }
-    public function show(){
-        $aqua=[
-            'varteliai' => $this->varteliaiSelected,
-            'vartai' => $this->vartaiSelected,
-            'tvora' => $this->tvoraSelected,
-            'boksteliai' => $this->boksteliaiSelected
-        ];
-        dd($aqua);
+    public function calc(){
+        $this->order = Product::whereIn('id', [$this->varteliaiSelected, $this->vartaiSelected, $this->tvoraSelected, $this->boksteliaiSelected])->get();
     }
 }

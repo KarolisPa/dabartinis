@@ -12,25 +12,25 @@
                 </div>
 
                 <!-- NUORODOS -->
-                <div class="flex mx-3">
+                <div class="flex mx-1">
                     <x-nav-link :href="route('index')" :active="request()->routeIs('index')">
                         {{ __('Pradžia') }}
                     </x-nav-link>
                 </div>
 
-                <div class="flex mx-3">
-                    <x-nav-link :href="route('fences')"  :active="request()->routeIs('fences')">
+                <div class="flex mx-1">
+                    <x-nav-link :href="route('products')"  :active="request()->routeIs('fences')">
                         {{ __('Tvoros') }}
                     </x-nav-link>
                 </div>
 
-                <div class="flex mx-3">
+                <div class="flex mx-1">
                     <x-nav-link :href="route('about')" :active="request()->routeIs('about')" >
-                        {{ __('Apie mus') }}
+                        {{ __('Apie') }}
                     </x-nav-link>
                 </div>
 
-                <div class="flex mx-3">
+                <div class="flex mx-1">
                     <x-nav-link :href="route('order')" :active="request()->routeIs('order')" >
                         {{ __('Skaičiuoklė') }}
                     </x-nav-link>

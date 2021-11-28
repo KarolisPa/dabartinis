@@ -29,6 +29,7 @@ class ProductListAdmin extends Component
     public  $name, $unit_of_measurement, $category, $model, $photo;
     public  $price ,  $discount_price;
     public  $discount_end, $about;
+    public $height, $width;
 
 
     public function saved(){
@@ -55,6 +56,8 @@ class ProductListAdmin extends Component
         $this->discount_status = $prod[0]["discount_status"];
         $this->discount_end = $prod[0]["discount_end"];
         $this->about = $prod[0]["about"];
+        $this->height = $prod[0]['height'];
+        $this->width = $prod[0]['width'];
     }
 
     public function delete($id){
@@ -102,7 +105,9 @@ class ProductListAdmin extends Component
             'discount_price' =>$this->discount_price,
             'discount_status'=>$this->discount_status,
             'discount_end'=>$this->discount_end,
-            'about' =>$this->about
+            'about' =>$this->about,
+            'height' => $this->height,
+            'width' => $this->width
         ]);
 
 //        $path = public_path('storage/products/'.$this->photo);

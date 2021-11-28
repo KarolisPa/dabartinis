@@ -21,9 +21,9 @@ Route::get('/order', function () {
     return view('order');
 })->name('order');
 
-Route::get('/fences', function () {
+Route::get('/products', function () {
     return view('fences');
-})->name('fences');
+})->name('products');
 
 Route::get('/about', function (){
     return view('About');
@@ -33,10 +33,10 @@ Route::get('/dash', function(){
     return view('adminBoard');
 })->middleware('auth')->name('adminPanel');
 
-Route::get('/preke/{id}', [\App\Http\Livewire\ProductList::class, 'show'])
+Route::get('/product/{id}', [\App\Http\Livewire\ProductList::class, 'show'])
     ->name('showPreke');
 
-Route::get('/akcija/{id}', [\App\Http\Livewire\ProductList::class, 'showDiscount'])
+Route::get('/discount/{id}', [\App\Http\Livewire\ProductList::class, 'showDiscount'])
     ->name('showPrekeDiscount');
 
 require __DIR__.'/auth.php';

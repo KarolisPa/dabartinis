@@ -13,6 +13,8 @@
             <td class="border px-6 py-4">Matavimo vnt.</td>
             <td class="border px-6 py-4">Kategorija</td>
             <td class="border px-6 py-4">Modelis</td>
+            <td class="border px-6 py-4">Aukštis</td>
+            <td class="border px-6 py-4">Plotis</td>
             <td class="border px-6 py-4">Kaina</td>
             <td class="border px-6 py-4">Akcija</td>
             <td class="border px-6 py-4">Kaina su akcija</td>
@@ -32,6 +34,8 @@
                 <td class="border px-6 py-4">{{$prod->unit_of_measurement}}</td>
                 <td class="border px-6 py-4">{{$prod->category}}</td>
                 <td class="border px-6 py-4">{{$prod->model}}</td>
+                <td class="border px-6 py-4">{{$prod->height}}</td>
+                <td class="border px-6 py-4">{{$prod->width}}</td>
                 <td class="border px-6 py-4">{{$prod->price}}</td>
                 @if($prod->discount_status == 1)
                 <td class="border px-6 py-4 bg-green-200 text-center">Taip</td>
@@ -51,11 +55,12 @@
         </div>
     </div>
 
+    <div>
     <!--Modal-->
-    <div wire:ignore.self class="overflow-scroll hidden pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50" id="modalasProd">
-        <div class="modal-overlayCatEdit absolute w-full h-full bg-gray-900 opacity-50" onclick="editProd()"></div>
+    <div wire:ignore.self class="fixed overflow-x-scroll hidden pointer-events-none w-full h-full items-center justify-center z-50 top-0 left-0" id="modalasProd">
+        <div class="modal-overlayCatEdit fixed w-full h-full bg-gray-900 opacity-50" onclick="editProd()"></div>
 
-        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+        <div class="modal-container relative bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg">
 
             <div class="modal-closeCatEdit absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">
                 <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
@@ -118,7 +123,17 @@
                                 </label>
                                 <input name ="modelProd" wire:model="model" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="{{$model}}">
                                 @error('model') <span class="error text-sm text-red-400">{{ $message }}</span> @enderror
-                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="priceProd">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="modelProd">
+                                Aukštis
+                            </label>
+                            <input name ="heightProd" wire:model="height" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="{{$height}}">
+                            @error('height') <span class="error text-sm text-red-400">{{ $message }}</span> @enderror
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="heightProd">
+                                Plotis
+                            </label>
+                            <input name ="widthProd" wire:model="width" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="{{$width}}">
+                            @error('width') <span class="error text-sm text-red-400">{{ $message }}</span> @enderror
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="widthProd">
                                     Kaina
                                 </label>
                                 <input name ="priceProd" wire:model="price" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="number" step="0.01" placeholder="{{$price}}">

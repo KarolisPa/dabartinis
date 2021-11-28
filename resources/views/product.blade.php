@@ -26,6 +26,14 @@
                                         <span class="ml-auto text-gray-900">{{$product->model}}</span>
                                     </div>
                                     <div class="flex border-t border-gray-200 py-2">
+                                        <span class="text-gray-500">Aukštis</span>
+                                        <span class="ml-auto title-font font-medium text-xl text-gray-900">{{$product->height}} m.</span>
+                                    </div>
+                                    <div class="flex border-t border-gray-200 py-2">
+                                        <span class="text-gray-500">Plotis</span>
+                                        <span class="ml-auto title-font font-medium text-xl text-gray-900">{{$product->width}} m.</span>
+                                    </div>
+                                    <div class="flex border-t border-gray-200 py-2">
                                         <span class="text-gray-500">Kaina</span>
                                         <span class="ml-auto title-font font-medium text-2xl text-gray-900">{{$product->price}} €</span>
                                     </div>

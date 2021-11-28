@@ -23,7 +23,7 @@
     {{--                            </button>--}}
     {{--                        </div>--}}
 
-    <div class="swiper-container " x-ref="container">
+    <div class="swiper-container" x-ref="container">
         <div class="swiper-wrapper">
             <!-- Slides -->
             <div class="swiper-slide">
