@@ -57,10 +57,10 @@
 
     <div>
     <!--Modal-->
-    <div wire:ignore.self class="fixed overflow-x-scroll hidden pointer-events-none w-full h-full items-center justify-center z-50 top-0 left-0" id="modalasProd">
-        <div class="modal-overlayCatEdit fixed w-full h-full bg-gray-900 opacity-50" onclick="editProd()"></div>
+        <div wire:ignore.self class="fixed absolute overflow-y-scroll hidden pointer-events-none w-full h-full items-center justify-center top-0 left-0 opacity-100 z-50" id="modalasProd">
+            <div class="fixed w-full h-full bg-gray-900 opacity-50 z-0" onclick="editProd()"></div>
 
-        <div class="modal-container relative bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg">
+            <div class="relative bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50">
 
             <div class="modal-closeCatEdit absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">
                 <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
@@ -88,7 +88,7 @@
                     >
                         <div class="flex flex-wrap -mx-3 mb-6">
 
-                            <input class="w-full px-3 mb-6 md:mb-0">
+                            <div class="w-full px-3 mb-6 md:mb-0">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="nameProd">
                                     Pavadinimas
                                 </label>
@@ -179,7 +179,7 @@
 
                             </div>
 {{--                        </div>--}}
-                        <button class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg" value="{{$prod->id}}" type="submit">Redaguoti</button>
+                        <button class="text-white bg-indigo-500 border-0 py-2 mt-5 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg" value="{{$prod->id}}" type="submit">Redaguoti</button>
                         @endisset
 
                     </form>

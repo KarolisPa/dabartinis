@@ -3,7 +3,7 @@
 
 <!--Modal-->
 <div wire:ignore.self class="fixed overflow-auto modal opacity-0 pointer-events-none w-full h-full top-0 left-0 items-center z-50">
-    <div class="modal-overlay fixed w-full bg-gray-900 opacity-50 h-full"></div>
+    <div class="modal-overlay fixed w-full bg-gray-900 opacity-50 h-full z-0"></div>
 
     <div class="modal-container relative bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50">
 

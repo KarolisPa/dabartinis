@@ -108,21 +108,84 @@
 
             <div class="text-right m-2">
                 @if($boksteliaiSelected == null)
-                    <button  class="disabled:opacity-10 p-2 bg-gray-500 text-white font-bold border-b-4 border-blue-700 rounded">Sekantis žingsnis</button>
+
+                    <button onclick="plusSlides(1)" class="disabled:opacity-10 p-2 bg-gray-500 text-white font-bold border-b-4 border-blue-700 rounded">Sekantis žingsnis</button>
+
                 @endif
                 @if($boksteliaiSelected !== null)
                     <div>
-                    <button wire:click="$emit('productsAdded')" onclick="plusSlides(1)" class="disabled:opacity-10 p-2 bg-blue-500 hover:bg-blue-400 text-white font-bold border-b-4 border-blue-700 hover:border-blue-500 rounded cursor-pointer left-auto right-0">Sekantis žingsnis</button>
+                    <button wire:click="$emit('productsAdded')" onclick="plusSlides(1)" class="p-2 bg-blue-500 hover:bg-blue-400 text-white font-bold border-b-4 border-blue-700 hover:border-blue-500 rounded cursor-pointer left-auto right-0">Sekantis žingsnis</button>
                     </div>
                         @endif
             </div>
         </div>
 
-        <div wire:ignore.self class="mySlides w-full h-auto ">
+        <div wire:ignore.self class="mySlides w-full h-auto">
             <h1 class="-mt-10">Jūsų pasirinktos tvoros dalys :</h1>
             <button class="bg-blue-400 rounded rounded-2xl m-2 px-2" wire:click="$emit('productsAdded')" >Tikrinti</button>
             <div class="lg:grid lg:gap-3 lg:grid-cols-3 sm:grid sm:gap-3 sm:grid-cols-2">
-{{$order}}
+                @isset($order)
+                    @foreach($order as $prods)
+                        <div class="rounded-xl shadow-xl border border-2 bg-gray-200 m-5" tabindex="0">
+                            <input type="image" class="border border-2 z-10 h-32  mt-3" alt="nuotrauka" src="{{asset('storage/products/'.$prods->photo)}}">
+                            <h2 class="text-gray-900 title-font text-lg font-medium">{{$prods->name}}</h2>
+                            <h2 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{$prods->category}}</h2>
+                            <p class="inline-block">Aukštis : <p class="text-lg inline">{{$prods->height}}</p></p>
+                            <p class="inline-block">Plotis : <p class="text-lg inline">{{$prods->width}}</p></p>
+                            <p class="mt-1 inline-block">Kaina : <p class="text-lg inline">{{$prods->price}} €</p></p>
+                        </div>
+                    @endforeach
+                @endisset
+            </div>
+            <div class="rounded-xl shadow-xl border border-2 bg-gray-200 w-full">
+
+                <form class="" method="post" wire:submit.prevent=""  x-init="@this.on('saved', clean())">
+                <label class="tracking-wide text-gray-700 text-2xl font-bold mb-2" for="fenceLenght">
+                    Įveskite tvoros ilgį
+                </label>
+                <input wire:model="fenceLenght" class="text-center inline appearance-none block bg-gray-100 text-gray-800 border border-gray-300 rounded py-3 px-4 mb-3 focus:outline-none focus:bg-white" name="fenceLenght" type="text" placeholder="Tvoros ilgis metrais">
+                @error('fenceLenght') <span class="error text-sm text-red-400">{{ $message }}</span> @enderror
+           <br>
+                    <span class="tracking-wide text-gray-700 text-xl font-bold mb-2">
+                        Pasirinkite norimas paslaugas
+                    </span>
+
+                                        <div class="lg:grid lg:gap-3 lg:grid-cols-3 sm:grid sm:gap-3 sm:grid-cols-2">
+
+{{--                                            Pasirinkimas Vartu automatizavimo darbo tvorai  sviestuvai --}}
+                                <div wire:click="$toggle('vartaiService')" class="rounded-xl shadow-xl border border-2 bg-gray-400 m-5 cursor-pointer focus:bg-blue-400" tabindex="0">
+                                    <img type="image" class="justify-center h-32  mt-3 mx-auto" alt="nuotrauka" src="{{asset('images/lietuva.png')}}">
+                                    <span class="tracking-wide text-gray-700 text-l font-bold mb-2">
+                                        Vartų automatizavimas
+                                    </span>
+                                    {{$vartaiService}}
+
+{{--                                    <select wire:model="service" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="categoryModel">--}}
+{{--                                        <option> Pasirinkite paslaugą </option>--}}
+{{--                                            <option value="{{$cat->name}}">{{$cat->name}}</option>--}}
+{{--                                    </select>--}}
+
+                                    {{--
+                                            <h2 class="text-gray-900 title-font text-lg font-medium">{{$prods->name}}</h2>--}}
+{{--                                    <h2 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{$prods->category}}</h2>--}}
+{{--                                    <p class="inline-block">Aukštis : <p class="text-lg inline">{{$prods->height}}</p></p>--}}
+{{--                                    <p class="inline-block">Plotis : <p class="text-lg inline">{{$prods->width}}</p></p>--}}
+{{--                                    <p class="mt-1 inline-block">Kaina : <p class="text-lg inline">{{$prods->price}} €</p></p>--}}
+                                </div>
+
+                               <div class="rounded-xl shadow-xl border border-2 bg-gray-400 m-5">
+                                      <img type="image" class="justify-center h-32  mt-3 mx-auto" alt="nuotrauka" src="{{asset('images/lietuva.png')}}">
+                                                {{--                                    <h2 class="text-gray-900 title-font text-lg font-medium">{{$prods->name}}</h2>--}}
+                                                {{--                                    <h2 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{$prods->category}}</h2>--}}
+                                                {{--                                    <p class="inline-block">Aukštis : <p class="text-lg inline">{{$prods->height}}</p></p>--}}
+                                                {{--                                    <p class="inline-block">Plotis : <p class="text-lg inline">{{$prods->width}}</p></p>--}}
+                                                {{--                                    <p class="mt-1 inline-block">Kaina : <p class="text-lg inline">{{$prods->price}} €</p></p>--}}
+                               </div>
+
+
+                    </div>
+
+                </form>
             </div>
 
         </div>
@@ -157,6 +220,6 @@
         </script>
     @endpush
 </div>
-</div>
+
 
 

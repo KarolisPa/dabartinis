@@ -13,6 +13,16 @@ class Calculator extends Component
     public $tvoraSelected;
     public $boksteliaiSelected;
     public $order;
+    public $fenceLenght;
+    public $vartaiService;
+
+    protected $rules = [
+        'fenceLenght' => 'required',
+    ];
+    protected $messages = [
+        'fenceLenght.required' => 'Būtina nurodyti tvoros ilgį',
+    ];
+
 
     protected $listeners = ['productsAdded' => 'calc'];
 
